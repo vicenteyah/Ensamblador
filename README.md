@@ -12,3 +12,7 @@ link nombrePrograma.obj,,,;
 ``` bash
 td nombrePrograma.exe
 ```
+**Comando para ejecutar el programa en terminal/CMD**
+``` bash
+nombrePrograma
+```
