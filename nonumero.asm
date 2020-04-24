@@ -18,6 +18,8 @@ data segment para memory 'data'
        TEXTO2 DB 0AH,0DH,"El resultado es:",0AH,0DH,"$"
        DATO DB 15,15 DUP ("$")
             DB 0AH,0DH,"$"
+       TEXTO3 DB 0AH,0DH,"¿Desea salir del programa(0) o hacer otra suma(1)? ",0AH,0DH,"$"
+       SALIDA DB 3,2 DUP ("$"),0AH,0DH,"$"
 
 data ends
 
@@ -30,7 +32,7 @@ prueba proc far
        PUSH AX
        MOV AX,SEG DATA	
        MOV DS,AX
-
+inicio:
        MOV AH,00H
        MOV AL,03H
        INT 10H
@@ -108,6 +110,18 @@ FINAL:
        MOV DX,OFFSET DATO
        INT 21H
 
+       MOV AH,09H		
+       MOV DX, OFFSET TEXTO4
+       INT 21H
+
+       MOV AH,0AH
+       MOV DX,OFFSET SALIDA
+       INT 21H			
+       MOV BL,SALIDA[2]
+       CMP BL,"1"
+       JNE salir
+       JMP inicio
+salir:
        RET
 
 prueba endp
