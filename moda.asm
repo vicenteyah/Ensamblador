@@ -2,10 +2,7 @@ PAGE 40,132
 
 TITLE Primer Programa en Ensamblador
 
-COMMENT * Este programa pretende mostrar en conjunto del debuguer
-          los diferentes registros del sistemas y unas operaciones
-          basicas que permitan tener un primer acercamiento al en-
-          samblador y al MASM51*
+COMMENT * Este programa realiza la moda de 100 valores inicializados en la variable datos*
 
 ;se inicializara el stack a continuacion
 

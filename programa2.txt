@@ -1,0 +1,33 @@
+PAGE 40,132
+
+TITLE Ejemplo de programa Ensamblador
+
+COMMENT *Este programa resta dos valores de un array y los guarda en la variable Resultado*
+
+stack segment para stack 'STACK'
+	db 64 dup ("STACK")
+stack ends
+
+data segment para memory 'data'
+	var1 db 01h,0,0
+	var2 dw 0FFFF,0,0
+	Resultado dw 0,0,0
+data ends
+
+code segment para 'code'
+	assume cs:code,ss:stack,ds:data
+
+prueba proc far
+	MOV AX,SEG DATA
+	MOV DS,AX
+
+	MOV AH,0
+	MOV BX,var2[0]
+	MOV AL,var1[0]
+	SUB BX,AX
+	MOV Resultado[0],BX
+prueba endp
+
+code ends
+
+END prueba
