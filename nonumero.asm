@@ -111,7 +111,7 @@ FINAL:
        INT 21H
 
        MOV AH,09H		
-       MOV DX, OFFSET TEXTO4
+       MOV DX, OFFSET TEXTO3
        INT 21H
 
        MOV AH,0AH
