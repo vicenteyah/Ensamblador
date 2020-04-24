@@ -2,10 +2,7 @@ PAGE 40,132
 
 TITLE Primer Programa en Ensamblador
 
-COMMENT * Este programa pretende mostrar en conjunto del debuguer
-          los diferentes registros del sistemas y unas operaciones
-          basicas que permitan tener un primer acercamiento al en-
-          samblador y al MASM51*
+COMMENT * Este programa indica al usuario que ingrese un número (10 dígitos máximo), cada tres dígitos se agrega una coma al número*
 
 ;se inicializara el stack a continuacion
 
