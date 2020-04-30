@@ -18,7 +18,7 @@ data segment para memory 'data'
               DB 0AH,0DH,"$"
         ORDEN DB 3,2 DUP ("$"),0AH,0DH,"$"
         TEXTO2 DB  0AH,0DH,"Los numeros son: ",0AH,0DH,"$"
-        TEXTO3 DB "INDIQUE LA FORMA EN QUE DESEA ORDENAR LOS NUMEROS (1)ASC (2)DESC",0AH,0DH,"$"
+        TEXTO3 DB 0AH,0DH,"INDIQUE LA FORMA EN QUE DESEA ORDENAR LOS NUMEROS (1)ASC (2)DESC",0AH,0DH,"$"
         TEXTO4 DB 0AH,0DH,"¿Desea salir del programa(0) o hacer otro ordenamiento(1)? ",0AH,0DH,"$"
         SALIDA DB 3,2 DUP ("$"),0AH,0DH,"$"
 
@@ -41,6 +41,15 @@ inicio:
        MOV CX,42
        MOV SI,2
        MOV DI,5
+       MOV AH,09H		;Funcio 09H para mostrar instrucciones
+       MOV DX, OFFSET TEXTO1
+       INT 21H
+
+       MOV AH,0AH
+       MOV DX,OFFSET DATOS
+       INT 21H			;Lee la tecla
+
+novalido:
        MOV AH,09H		;Funcio 09H para mostrar instrucciones de ordenamiento
        MOV DX, OFFSET TEXTO3
        INT 21H
@@ -50,15 +59,12 @@ inicio:
        INT 21H			;Lee la tecla
        MOV BL,ORDEN[SI]
 
-       MOV AH,09H		;Funcio 09H para mostrar instrucciones
-       MOV DX, OFFSET TEXTO1
-       INT 21H
-
-       MOV AH,0AH
-       MOV DX,OFFSET DATOS
-       INT 21H			;Lee la tecla
        CMP BL,"2"
        JE descendente
+       CMP BL,"1"
+       JE ascendente
+       JMP novalido
+ascendente:
        JMP ciclo
 
 cambio_num:
