@@ -147,6 +147,7 @@ fin_ciclo:
        MOV AH,09H
        INT 21H
 
+numinvalido:
        MOV AH,09H		;Funcio 09H para mostrar instrucciones
        MOV DX, OFFSET TEXTO4
        INT 21H
@@ -155,8 +156,12 @@ fin_ciclo:
        MOV DX,OFFSET SALIDA
        INT 21H			;Lee la tecla
        MOV BL,SALIDA[2]
+       CMP BL,"0"
+       JE salir
        CMP BL,"1"
-       JNE salir
+       JE reinicio
+       JMP numinvalido
+reinicio:
        JMP inicio
 
 salir:
