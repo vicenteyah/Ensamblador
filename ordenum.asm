@@ -2,7 +2,7 @@ PAGE 40,132
 
 TITLE Ejemplo de Programa en Ensamblador
 
-COMMENT * Este programa muestra en pantalla los valores de las variables ordenados ascendentemente*
+COMMENT * Este programa solicta al usuario 10 valores y los muestra en pantalla ordenados de forma ascendente o descendente*
 
 ;se inicializara el stack a continuacion
 
