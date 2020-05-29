@@ -33,12 +33,12 @@ revisar:
        MOV SEGUNDOS,DH		;Pasamos el dato contenido en DH a la variable SEGUNDOS para cambiar los segundos y poder tener un control del incremento del tiempo
        CMP BH,39H		;Revisamos si BH llegó a 9 para realizar el incrmento a 10 o si ya pasó un minuto
        JE sumseg
-       ADD BH,01H		;Si no ha llegado a 9 se le suma 1 al registro para incrementar los segundos (usar INC)
+       INC BH			;Si no ha llegado a 9 se le suma 1 al registro para incrementar los segundos (usar INC)
        JMP salir
 sumseg:
        CMP BL,35H		;Se revisa si BL llegó a 5, si ya llegó a ese valor, quiere decir que es 59 el dato de los segundos contenidos en BX y ya se llegó al minuto
        JE minuto		
-       ADD BL,01H		;Se incrementa en 1 el registro BL porque no ha llegado al valor 5
+       INC BL			;Se incrementa en 1 el registro BL porque no ha llegado al valor 5
        MOV BH,30H		;Se pone en 0 BH porque ya se llegó a las decenas en los segundos
        JMP salir
 minuto:
@@ -49,7 +49,7 @@ minuto:
        ADD CH,01H		;Se incrementan los minutos
        JMP salir
 summin:
-       ADD CL,01H
+       INC CL
        MOV CH,30H
        JMP salir
 salir:
@@ -118,7 +118,7 @@ salirAcomodo:
        MOV SI,DI		;Se respalda la posición contenida DI en SI 
 ciclo:				;Inicia el ciclo del contador
        MOV AL,VAR1[SI]		;Se mueve el valor contenido en Var1[SI] al registro AL
-       ADD AL,1			;Se le suma 1
+       INC AL			;Se le suma 1
        CMP AL,"9"		;Se compara si ya llegó al 9 para incrementar el siguiente dato del arreglo
        JA reinicio
        MOV VAR1[SI],AL		;Si no ha superado el valor 9, entonces se mueve a la variable VAR1
@@ -140,7 +140,7 @@ reinicio:
        MOV VAR1[SI],"0"		;Sí el dato contenido en SI superó el 9, entonces se le pone un 0 para que vuelva a contar
        DEC SI			;Se decrementa el índice para ir a la siguiente posición
        MOV AL,VAR1[SI]		;Se pasa al registro AL
-       ADD AL,1			;Se le suma un 1
+       INC AL			;Se le suma un 1
        CMP AL,"9"		;Se verifica si ya superó el valor 9
        JA reinicio
        MOV VAR1[SI],AL
