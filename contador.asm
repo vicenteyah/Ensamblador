@@ -2,7 +2,7 @@ PAGE 40,132
 
 TITLE Contador
 
-COMMENT * Este programa es un contador*
+COMMENT * Este programa es un contador, el cual cuenta de forma infinita o por tiempo dependiendo de la opcion elegida por el usuario*
 
 
 stack   segment para stack 'STACK'        
