@@ -85,6 +85,7 @@ CICLO2:
        JMP FINAL
 COMA:
        MOV DI,SI
+       PUSH CX
        MOV CL,DATO[DI]
        MOV CH,DATO[DI]
        MOV CL,","
@@ -99,6 +100,7 @@ CICLO3:
        CMP DI,BX
        JBE CICLO3
        INC SI
+       POP CX
        JMP CICLO2
 
 FINAL:
